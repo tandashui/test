@@ -255,7 +255,7 @@ class IndexController extends Controller {
 
 
 	}
-}//class end
+
 
 }
 
