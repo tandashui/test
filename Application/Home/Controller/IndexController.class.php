@@ -53,7 +53,7 @@ class IndexController extends Controller {
 		//判断该数据包是否是订阅的事件推送
 		if( strtolower( $postObj->MsgType) == 'event'){
 			//如果是关注 subscribe 事件
-			if( strtolower($postObj->Event == 'click') ){
+			if( strtolower($postObj->Event == 'subscribe') ){
 
 				//回复用户消息(纯文本格式)	
 				$toUser   = $postObj->FromUserName;
@@ -98,19 +98,19 @@ class IndexController extends Controller {
 
 				// $indexModel->responseText($postObj,$content);
 
-						$template = "<xml>
-				<ToUserName><![CDATA[%s]]></ToUserName>
-				<FromUserName><![CDATA[%s]]></FromUserName>
-				<CreateTime>%s</CreateTime>
-				<MsgType><![CDATA[%s]]></MsgType>
-				<Content><![CDATA[%s]]></Content>
-				</xml>";
-				//注意模板中的中括号 不能少 也不能多
-				$fromUser = $postObj->ToUserName;
-				$toUser   = $postObj->FromUserName; 
-				$time     = time();
-				$msgType  = 'text';
-				echo sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+				$template = "<xml>
+		<ToUserName><![CDATA[%s]]></ToUserName>
+		<FromUserName><![CDATA[%s]]></FromUserName>
+		<CreateTime>%s</CreateTime>
+		<MsgType><![CDATA[%s]]></MsgType>
+		<Content><![CDATA[%s]]></Content>
+		</xml>";
+		//注意模板中的中括号 不能少 也不能多
+		$fromUser = $postObj->ToUserName;
+		$toUser   = $postObj->FromUserName; 
+		$time     = time();
+		$msgType  = 'text';
+		echo sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
 
 				if (strtolower($postObj->Event) == 'view') {
 					# code...
