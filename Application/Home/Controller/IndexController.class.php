@@ -79,6 +79,35 @@ class IndexController extends Controller {
 			}
 		}
 
+		if (strtolower($postObj->Event) == 'click') {
+			//如果是定义菜单中的event->click
+			if (strtolower($postObj->EventKey) == 'item1') {
+				# code...
+				$content = 'item1推送时间';
+			}
+
+			if (strtolower($postObj->EventKey) == 'songs') {
+				# code...
+				$content = '歌曲推送时间';
+			}
+
+			$indexModel = new IndexModel;
+
+			$indexModel->responseText($postObj,$content);
+
+			if (strtolower($postObj->Event) == 'view') {
+				# code...
+				$content = "跳转链接是".$postObj->EventKey;
+
+			}
+
+			$indexModel = new IndexModel;
+
+			$indexModel->responseText($postObj,$content);
+
+
+		}
+
 		//当微信用户发送imooc，公众账号回复‘imooc is very good'
 		/*<xml>
 <ToUserName><![CDATA[toUser]]></ToUserName>
@@ -204,34 +233,7 @@ class IndexController extends Controller {
 			
 		}//if end
 
-		if (strtolower($postObj->Event) == 'click') {
-			//如果是定义菜单中的event->click
-			if (strtolower($postObj->EventKey) == 'item1') {
-				# code...
-				$content = 'item1推送时间';
-			}
 
-			if (strtolower($postObj->EventKey) == 'songs') {
-				# code...
-				$content = '歌曲推送时间';
-			}
-
-			$indexModel = new IndexModel;
-
-			$indexModel->responseText($postObj,$content);
-
-			if (strtolower($postObj->Event) == 'view') {
-				# code...
-				$content = "跳转链接是".$postObj->EventKey;
-
-			}
-
-			$indexModel = new IndexModel;
-
-			$indexModel->responseText($postObj,$content);
-
-
-		}
 	}//reponseMsg end
 
 	// function http_curl(){
