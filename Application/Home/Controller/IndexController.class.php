@@ -333,6 +333,7 @@ class IndexController extends Controller {
 public function definedItem(){
 	//创建微信菜单
 	//目前微信接口的调用方式都是通过curl post/get
+	header('content-type:text/html;charset=utf-8');
 	echo $access_token = $this->getWxAccessToken();
 	echo '<br/>';
 	$url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
@@ -341,12 +342,12 @@ public function definedItem(){
 		'button'=>array(
 
 				array(
-					'name'=>urlencode('菜单一'),
+					'name'=>urlencode('首页'),
 					'type'=>'click',
 					'key'=>'item1',
 				),//第一个一级菜单
 				array(
-					'name'=>urlencode('菜单二'),
+					'name'=>urlencode('个人娱乐'),
 					'sub_button'=>array(
 						array(
 							'name'=>urlencode('歌曲'),
@@ -356,15 +357,15 @@ public function definedItem(){
 						array(
 							'name'=>urlencode('电影'),
 							'type'=>'view',
-							'url'=>'http://www.baidu.com',
+							'url'=>'http://film.qq.com/2015/',
 						),//第二个二级菜单
 
 					),
 				),//第二个一级菜单
 				array(
-					'name'=>urlencode('菜单三'),
+					'name'=>urlencode('个人博客'),
 					'type'=>'view',
-					'url'=>'http://www.qq.com'
+					'url'=>'http://www.tandashui.com'
 
 				),//第三个一级菜单
 			),
