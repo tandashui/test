@@ -5,9 +5,10 @@ class IndexController extends Controller {
     public function index(){
         //获得参数 signature nonce token timestamp echostr
 		$nonce     = $_GET['nonce'];
-		echo $nonce;die;
+		// echo $nonce;die;
 		$token     = 'myweixin';
 		$timestamp = $_GET['timestamp'];
+		echo $timestamp;die;
 		$echostr   = $_GET['echostr'];
 		$signature = $_GET['signature'];
 		//形成数组，然后按字典序排序
