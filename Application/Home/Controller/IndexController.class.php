@@ -244,7 +244,17 @@ class IndexController extends Controller {
 
 		if ($res == 'json') {
 			# code...
-			return json_decode($output,true);
+			if (curl_error($ch)) {
+				# code...
+				//请求失败，返回错误信息
+				return curl_error($ch);
+
+			} else {
+				//请求成功
+				return json_decode($output,true);
+			}
+			
+
 		}
 		//4.关闭
 		curl_close($ch);
@@ -331,20 +341,20 @@ public function definedItem(){
 		'button'=>array(
 
 				array(
-					'name'=>'菜单一',
+					'name'=>urlencode('菜单一'),
 					'type'=>'click',
 					'key'=>'item1',
 				),//第一个一级菜单
 				array(
-					'name'=>'菜单二',
+					'name'=>urlencode('菜单二'),
 					'sub_button'=>array(
 						array(
-							'name'=>'歌曲',
+							'name'=>urlencode('歌曲'),
 							'type'=>'click',
 							'key'=>'songs',
 						),//第一个二级菜单
 						array(
-							'name'=>'电影',
+							'name'=>urlencode('电影'),
 							'type'=>'view',
 							'url'=>'http://www.baidu.com',
 						),//第二个二级菜单
@@ -352,7 +362,7 @@ public function definedItem(){
 					),
 				),//第二个一级菜单
 				array(
-					'name'=>'菜单三',
+					'name'=>urlencode('菜单三'),
 					'type'=>'view',
 					'url'=>'http://www.qq.com'
 
@@ -360,8 +370,11 @@ public function definedItem(){
 			),
 			
 		);
+	echo '<hr/>';
+	var_dump($postArr);
+	echo '<hr/>';
 
-	echo $postJson = json_encode( $postArr );
+	echo $postJson = urldecode(json_encode( $postArr ));
 	$res = $this->http_curl($url,'post','json',$postJson);
 
 	var_dump($res);
