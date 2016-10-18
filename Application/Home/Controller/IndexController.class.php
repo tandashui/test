@@ -54,7 +54,7 @@ class IndexController extends Controller {
 		if( strtolower( $postObj->MsgType) == 'event'){
 			//如果是关注 subscribe 事件
 			if( strtolower($postObj->Event == 'subscribe') ){
-				echo 3;
+
 				//回复用户消息(纯文本格式)	
 				$toUser   = $postObj->FromUserName;
 				$fromUser = $postObj->ToUserName;
@@ -82,7 +82,7 @@ class IndexController extends Controller {
 			}
 
 				if (strtolower($postObj->Event) == 'click') {
-					echo 2;
+					
 				//如果是定义菜单中的event->click
 				if (strtolower($postObj->EventKey) == 'item1') {
 					# code...
@@ -94,9 +94,23 @@ class IndexController extends Controller {
 					$content = '歌曲推送时间';
 				}
 
-				$indexModel = new IndexModel;
+				// $indexModel = new IndexModel;
 
-				$indexModel->responseText($postObj,$content);
+				// $indexModel->responseText($postObj,$content);
+
+						$template = "<xml>
+				<ToUserName><![CDATA[%s]]></ToUserName>
+				<FromUserName><![CDATA[%s]]></FromUserName>
+				<CreateTime>%s</CreateTime>
+				<MsgType><![CDATA[%s]]></MsgType>
+				<Content><![CDATA[%s]]></Content>
+				</xml>";
+				//注意模板中的中括号 不能少 也不能多
+				$fromUser = $postObj->ToUserName;
+				$toUser   = $postObj->FromUserName; 
+				$time     = time();
+				$msgType  = 'text';
+				echo sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
 
 				if (strtolower($postObj->Event) == 'view') {
 					# code...
