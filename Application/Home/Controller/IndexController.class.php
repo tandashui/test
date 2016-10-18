@@ -362,7 +362,7 @@ public function definedItem(){
 		);
 
 	echo $postJson = json_encode( $postArr );
-	$res = $this->http_curl($http_curl,'post','json',$postJson);
+	$res = $this->http_curl($url,'post','json',$postJson);
 
 	var_dump($res);
 }
