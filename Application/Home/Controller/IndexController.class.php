@@ -8,7 +8,7 @@ class IndexController extends Controller {
 		// echo $nonce;die;
 		$token     = 'myweixin';
 		$timestamp = $_GET['timestamp'];
-		echo $timestamp;die;
+		// echo $timestamp;die;
 		$echostr   = $_GET['echostr'];
 		$signature = $_GET['signature'];
 		//形成数组，然后按字典序排序
