@@ -344,7 +344,7 @@ public function definedItem(){
 							'key'=>'songs',
 						),//第一个二级菜单
 						array(
-							'name'='电影',
+							'name'=>'电影',
 							'type'=>'view',
 							'url'=>'http://www.baidu.com',
 						),//第二个二级菜单
@@ -353,7 +353,7 @@ public function definedItem(){
 				),//第二个一级菜单
 				array(
 					'name'=>'菜单三',
-					'type'='view',
+					'type'=>'view',
 					'url'=>'http://www.qq.com'
 
 				),//第三个一级菜单
