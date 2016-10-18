@@ -205,41 +205,73 @@ class IndexController extends Controller {
 		}//if end
 	}//reponseMsg end
 
-	function http_curl(){
+	// function http_curl(){
+	// 	//获取imooc
+	// 	//1.初始化curl
+	// 	$ch = curl_init();
+	// 	$url = 'http://www.baidu.com';
+	// 	//2.设置curl的参数
+	// 	curl_setopt($ch, CURLOPT_URL, $url);
+	// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	// 	//3.采集
+	// 	$output = curl_exec($ch);
+	// 	//4.关闭
+	// 	curl_close($ch);
+	// 	var_dump($output);
+	// }
+
+	/*$url 接口urlstring
+	*$type 请求类型 string
+	*$res 返回数据类型 string
+	*$arr post 请求参数 string
+	*/
+	function http_curl($url,$type='get',$res='json',$arr=''){
 		//获取imooc
 		//1.初始化curl
 		$ch = curl_init();
-		$url = 'http://www.baidu.com';
+		
 		//2.设置curl的参数
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+		if ($type == 'post') {
+			# code...
+			curl_setopt($ch,CURLOPT_POST,1);
+			curl_setopt($ch,CURLOPT_POSTFIELDS,$arr);
+		}
 		//3.采集
 		$output = curl_exec($ch);
+
+		if ($res == 'json') {
+			# code...
+			return json_decode($output,true);
+		}
 		//4.关闭
 		curl_close($ch);
 		var_dump($output);
 	}
 
-	function getWxAccessToken(){
-		//1.请求url地址
-		$appid = 'wxf53ce7de30b50d8f';
-		$appsecret =  '3a4805a4253481aba919a831f15fe3b8';
-		$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$appsecret;
-		//2初始化
-		$ch = curl_init();
-		//3.设置参数
-		curl_setopt($ch , CURLOPT_URL, $url);
-		curl_setopt($ch , CURLOPT_RETURNTRANSFER, 1);
-		//4.调用接口 
-		$res = curl_exec($ch);
-		//5.关闭curl
-		curl_close( $ch );
-		if( curl_errno($ch) ){
-			var_dump( curl_error($ch) );
-		}
-		$arr = json_decode($res, true);
-		var_dump( $arr );
-	}
+	// function getWxAccessToken(){
+	// 	//1.请求url地址
+	// 	$appid = 'wxf53ce7de30b50d8f';
+	// 	$appsecret =  '3a4805a4253481aba919a831f15fe3b8';
+	// 	$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$appsecret;
+	// 	//2初始化
+	// 	$ch = curl_init();
+	// 	//3.设置参数
+	// 	curl_setopt($ch , CURLOPT_URL, $url);
+	// 	curl_setopt($ch , CURLOPT_RETURNTRANSFER, 1);
+	// 	//4.调用接口 
+	// 	$res = curl_exec($ch);
+	// 	//5.关闭curl
+	// 	curl_close( $ch );
+	// 	if( curl_errno($ch) ){
+	// 		var_dump( curl_error($ch) );
+	// 	}
+	// 	$arr = json_decode($res, true);
+	// 	var_dump( $arr );
+	// }
+
 
 	function getWxServerIp(){
 		$accessToken = "6vOlKOh7r5uWk_ZPCl3DS36NEK93VIH9Q9tacreuxJ5WzcVc235w_9zONy75NoO11gC9P0o4FBVxwvDiEtsdX6ZRFR0Lfs_ymkb8Bf6kRfo";
@@ -259,6 +291,96 @@ class IndexController extends Controller {
 
 
 	}
+
+	//返回access_token *session解决方法 存mysql memcache 
+	public function getWxAccessToken(){
+		//将access_token 存在session/cookie中
+
+		if ( $_SESSION['access_token'] && $_SESSION['expire_time']>time()) {
+			//如果access_token 在session并没有过期
+			return $_SESSION['access_token'];
+		}else{
+			//如果access_token不存在或者已经过期，重新取access_token
+		$appid = 'wxf53ce7de30b50d8f';
+		$appsecret =  '3a4805a4253481aba919a831f15fe3b8';
+		$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$appsecret;
+
+		$res = $this->http_curl($url,'get','json');
+
+		$access_token = $res['access_token'];
+
+		//将重新获取到access_token存到session
+		$_SESSION['access_token'] = $access_token;
+		$_SESSION['expire_time'] = time()+7000;
+
+		return $access_token;
+
+
+		}
+
+	}
+
+public function definedItem(){
+	//创建微信菜单
+	//目前微信接口的调用方式都是通过curl post/get
+	echo $access_token = $this->getWxAccessToken();
+	echo '<br/>';
+	$url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
+
+	$postArr = array(
+		'button'=>array(
+
+				array(
+					'name'=>'菜单一',
+					'type'=>'click',
+					'key'=>'item1',
+				),//第一个一级菜单
+				array(
+					'name'=>'菜单二',
+					'sub_button'=>array(
+						array(
+							'name'=>'歌曲',
+							'type'=>'click',
+							'key'=>'songs',
+						),//第一个二级菜单
+						array(
+							'name'='电影',
+							'type'=>'view',
+							'url'=>'http://www.baidu.com',
+						),//第二个二级菜单
+
+					),
+				),//第二个一级菜单
+				array(
+					'name'=>'菜单三',
+					'type'='view',
+					'url'=>'http://www.qq.com'
+
+				),//第三个一级菜单
+			),
+			
+		);
+
+	echo $postJson = json_encode( $postArr );
+	$res = $this->http_curl($http_curl,'post','json',$postJson);
+
+	var_dump($res);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
