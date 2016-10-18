@@ -27,7 +27,7 @@ class IndexModel {
 
 	// 回复单文本
 	public function responseText($postObj,$content){
-		var_dump($content);die;
+		// var_dump($content);die;
 		$template = "<xml>
 		<ToUserName><![CDATA[%s]]></ToUserName>
 		<FromUserName><![CDATA[%s]]></FromUserName>
