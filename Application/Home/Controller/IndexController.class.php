@@ -16,7 +16,7 @@ class IndexController extends Controller {
 		$array = array($nonce, $timestamp, $token);
 		// var_dump($array);die;
 		sort($array);
-		$this->reponseMsg();
+
 		//拼接成字符串,sha1加密 ，然后与signature进行校验
 		$str = sha1( implode( $array ) );
 		if( $str  == $signature && $echostr ){
@@ -24,6 +24,7 @@ class IndexController extends Controller {
 			echo  $echostr;
 			exit;
 		}else{
+			echo 2;die;
 			$this->reponseMsg();
 		}
     }
