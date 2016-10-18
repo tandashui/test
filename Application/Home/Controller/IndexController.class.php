@@ -32,7 +32,7 @@ class IndexController extends Controller {
 	public function reponseMsg(){
 		//1.获取到微信推送过来post数据（xml格式）
 		$postArr = $GLOBALS['HTTP_RAW_POST_DATA'];
-		var_dump($postArr);die;
+		// var_dump($postArr);die;
 		//2.处理消息类型，并设置回复类型和内容
 		/*<xml>
 <ToUserName><![CDATA[toUser]]></ToUserName>
