@@ -5,6 +5,7 @@ class IndexController extends Controller {
     public function index(){
         //获得参数 signature nonce token timestamp echostr
 		$nonce     = $_GET['nonce'];
+		echo $nonce;die;
 		$token     = 'myweixin';
 		$timestamp = $_GET['timestamp'];
 		$echostr   = $_GET['echostr'];
@@ -12,7 +13,7 @@ class IndexController extends Controller {
 		//形成数组，然后按字典序排序
 		$array = array();
 		$array = array($nonce, $timestamp, $token);
-		var_dump($array);die;
+		// var_dump($array);die;
 		sort($array);
 		//拼接成字符串,sha1加密 ，然后与signature进行校验
 		$str = sha1( implode( $array ) );
