@@ -54,6 +54,7 @@ class IndexController extends Controller {
 		if( strtolower( $postObj->MsgType) == 'event'){
 			//如果是关注 subscribe 事件
 			if( strtolower($postObj->Event == 'subscribe') ){
+				echo 3;
 				//回复用户消息(纯文本格式)	
 				$toUser   = $postObj->FromUserName;
 				$fromUser = $postObj->ToUserName;
