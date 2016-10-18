@@ -203,6 +203,35 @@ class IndexController extends Controller {
 				echo sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
 			
 		}//if end
+
+		if (strtolower($postObj->Event) == 'click') {
+			//如果是定义菜单中的event->click
+			if (strtolower($postObj->EventKey) == 'item1') {
+				# code...
+				$content = 'item1推送时间';
+			}
+
+			if (strtolower($postObj->EventKey) == 'songs') {
+				# code...
+				$content = '歌曲推送时间';
+			}
+
+			$indexModel = new IndexModel;
+
+			$indexModel->responseText($postObj,$content);
+
+			if (strtolower($postObj->Event) == 'view') {
+				# code...
+				$content = "跳转链接是".$postObj->EventKey;
+
+			}
+
+			$indexModel = new IndexModel;
+
+			$indexModel->responseText($postObj,$content);
+
+
+		}
 	}//reponseMsg end
 
 	// function http_curl(){
