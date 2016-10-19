@@ -179,7 +179,7 @@ class IndexController extends Controller {
 			$fromUser = $postObj->ToUserName;
 			$arr = array(
 				array(
-					'title'=>'imooc',
+					'title'=>'檀大水博客',
 					'description'=>"大水 is very cool",
 					'picUrl'=>'http://tu.duowan.com/gallery/129417.html#p1',
 					'url'=>'http://www.tandashui.com',
