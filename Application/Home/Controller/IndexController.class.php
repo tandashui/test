@@ -181,19 +181,19 @@ class IndexController extends Controller {
 				array(
 					'title'=>'檀大水博客',
 					'description'=>"大水 is very cool",
-					'picUrl'=>'http://tu.duowan.com/gallery/129417.html#p1',
+					'picUrl'=>'http://b.hiphotos.baidu.com/image/pic/item/908fa0ec08fa513d17b6a2ea386d55fbb2fbd9e2.jpg',
 					'url'=>'http://www.tandashui.com',
 				),
 				array(
 					'title'=>'hao123',
 					'description'=>"hao123 is very cool",
-					'picUrl'=>'http://tu.duowan.com/gallery/129417.html#p1',
+					'picUrl'=>'http://g.hiphotos.baidu.com/image/pic/item/30adcbef76094b36aab24507a7cc7cd98d109d33.jpg',
 					'url'=>'http://www.hao123.com',
 				),
 				array(
 					'title'=>'qq',
 					'description'=>"qq is very cool",
-					'picUrl'=>'http://www.imooc.com/static/img/common/logo.png',
+					'picUrl'=>'http://d.hiphotos.baidu.com/image/pic/item/9e3df8dcd100baa156eb577b4310b912c9fc2e2e.jpg',
 					'url'=>'http://www.qq.com',
 				),
 			);
