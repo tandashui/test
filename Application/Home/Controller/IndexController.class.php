@@ -91,7 +91,7 @@ class IndexController extends Controller {
 
 				if (strtolower($postObj->EventKey) == 'songs') {
 					# code...
-					$content = '歌曲推送时间';
+					$content = '推荐歌曲想把你挽留';
 				}
 
 				// $indexModel = new IndexModel;
