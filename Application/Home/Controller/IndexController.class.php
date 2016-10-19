@@ -86,7 +86,7 @@ class IndexController extends Controller {
 				//如果是定义菜单中的event->click
 				if (strtolower($postObj->EventKey) == 'item1') {
 					# code...
-					$content = 'item1推送时间';
+					$content = '您可以回复1,2,3,4或者大水您好 ,回复tuwen2可以查看更多文章';
 				}
 
 				if (strtolower($postObj->EventKey) == 'songs') {
@@ -232,7 +232,7 @@ class IndexController extends Controller {
 				case 4:
 					$content = "<a href='http://www.tandashui.com'>檀大水博客</a>";
 				break;
-				case '英文':
+				case '大水您好':
 					$content = 'tandashui hao';
 				break;
 			}	
