@@ -181,7 +181,7 @@ class IndexController extends Controller {
 				array(
 					'title'=>'imooc',
 					'description'=>"大水 is very cool",
-					'picUrl'=>'http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87&hs=0&pn=4&spn=0&di=29479970960&pi=0&rn=1&tn=baiduimagedetail&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=3843979064%2C1483327667&os=520546042%2C363835675&simid=3297554868%2C89930885&adpicid=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fpic44.nipic.com%2F20140721%2F11624852_001107119409_2.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bgtrtv_z%26e3Bv54AzdH3Ffi5oAzdH3F8amcadn8_z%26e3Bip4s&gsm=0',
+					'picUrl'=>'http://tu.duowan.com/gallery/129417.html#p1',
 					'url'=>'http://www.tandashui.com',
 				),
 				array(
