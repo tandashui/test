@@ -180,14 +180,14 @@ class IndexController extends Controller {
 			$arr = array(
 				array(
 					'title'=>'imooc',
-					'description'=>"imooc is very cool",
-					'picUrl'=>'http://www.imooc.com/static/img/common/logo.png',
-					'url'=>'http://www.imooc.com',
+					'description'=>"大水 is very cool",
+					'picUrl'=>'http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87&hs=0&pn=4&spn=0&di=29479970960&pi=0&rn=1&tn=baiduimagedetail&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=3843979064%2C1483327667&os=520546042%2C363835675&simid=3297554868%2C89930885&adpicid=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fpic44.nipic.com%2F20140721%2F11624852_001107119409_2.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bgtrtv_z%26e3Bv54AzdH3Ffi5oAzdH3F8amcadn8_z%26e3Bip4s&gsm=0',
+					'url'=>'http://www.tandashui.com',
 				),
 				array(
 					'title'=>'hao123',
 					'description'=>"hao123 is very cool",
-					'picUrl'=>'https://www.baidu.com/img/bdlogo.png',
+					'picUrl'=>'http://tu.duowan.com/gallery/129417.html#p1',
 					'url'=>'http://www.hao123.com',
 				),
 				array(
@@ -230,10 +230,10 @@ class IndexController extends Controller {
 					$content = '您输入的数字是3';
 				break;
 				case 4:
-					$content = "<a href='http://www.imooc.com'>慕课</a>";
+					$content = "<a href='http://www.tandashui.com'>檀大水博客</a>";
 				break;
 				case '英文':
-					$content = 'imooc is ok';
+					$content = 'tandashui hao';
 				break;
 			}	
 				$template = "<xml>
