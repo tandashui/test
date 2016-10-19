@@ -103,6 +103,7 @@ class IndexController extends Controller {
 		<FromUserName><![CDATA[%s]]></FromUserName>
 		<CreateTime>%s</CreateTime>
 		<MsgType><![CDATA[%s]]></MsgType>
+		<Event><![CDATA[%s]]></Event>
 		<Content><![CDATA[%s]]></Content>
 		</xml>";
 		//注意模板中的中括号 不能少 也不能多
@@ -110,7 +111,8 @@ class IndexController extends Controller {
 		$toUser   = $postObj->FromUserName; 
 		$time     = time();
 		$msgType  = 'text';
-		echo sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+		$clicks = 'CLICK';
+		echo sprintf($template, $toUser, $fromUser, $time, $msgType, ,$clicks,$content);
 
 				if (strtolower($postObj->Event) == 'view') {
 					# code...
