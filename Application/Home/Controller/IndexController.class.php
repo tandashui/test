@@ -81,7 +81,7 @@ class IndexController extends Controller {
 
 			}
 
-				if (strtolower($postObj->Event) == 'CLICK') {
+				if (strtolower($postObj->Event) == 'click') {
 					
 				//如果是定义菜单中的event->click
 				if (strtolower($postObj->EventKey) == 'item1') {
@@ -103,7 +103,6 @@ class IndexController extends Controller {
 		<FromUserName><![CDATA[%s]]></FromUserName>
 		<CreateTime>%s</CreateTime>
 		<MsgType><![CDATA[%s]]></MsgType>
-		<Event><![CDATA[%s]]></Event>
 		<Content><![CDATA[%s]]></Content>
 		</xml>";
 		//注意模板中的中括号 不能少 也不能多
@@ -111,18 +110,17 @@ class IndexController extends Controller {
 		$toUser   = $postObj->FromUserName; 
 		$time     = time();
 		$msgType  = 'text';
-		$clicks = 'click';
-		echo sprintf($template, $toUser, $fromUser, $time, $msgType,$clicks,$content);
+		echo sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
 
-				if (strtolower($postObj->Event) == 'view') {
-					# code...
-					$content = "跳转链接是".$postObj->EventKey;
+				// if (strtolower($postObj->Event) == 'view') {
+				// 	# code...
+				// 	$content = "跳转链接是".$postObj->EventKey;
 
-				}
+				// }
 
-				$indexModel = new IndexModel;
+				// $indexModel = new IndexModel;
 
-				$indexModel->responseText($postObj,$content);
+				// $indexModel->responseText($postObj,$content);
 
 
 			}
