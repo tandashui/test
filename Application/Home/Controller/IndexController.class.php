@@ -81,7 +81,7 @@ class IndexController extends Controller {
 
 			}
 
-				if (strtolower($postObj->Event) == 'click') {
+				if (strtolower($postObj->Event) == 'CLICK') {
 					
 				//如果是定义菜单中的event->click
 				if (strtolower($postObj->EventKey) == 'item1') {
