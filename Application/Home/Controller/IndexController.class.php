@@ -111,7 +111,7 @@ class IndexController extends Controller {
 		$toUser   = $postObj->FromUserName; 
 		$time     = time();
 		$msgType  = 'text';
-		$clicks = 'CLICK';
+		$clicks = 'click';
 		echo sprintf($template, $toUser, $fromUser, $time, $msgType,$clicks,$content);
 
 				if (strtolower($postObj->Event) == 'view') {
