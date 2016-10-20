@@ -478,7 +478,17 @@ public function getcode(){
 }
 
 public function getopen_id(){
-	var_dump($_GET);die;
+	// var_dump($_GET);die;
+	$appid = 'wxf53ce7de30b50d8f';
+	$appsecret =  '3a4805a4253481aba919a831f15fe3b8';
+
+	$code = I('get.code');
+
+	$url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$appid."&secret=".$appsecret."&code=".$code."&grant_type=authorization_code";
+
+	$res = $this->http_curl($url,'get','json');
+
+	var_dump($res);die;
 }
 
 
