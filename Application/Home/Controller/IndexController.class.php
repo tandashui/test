@@ -441,7 +441,7 @@ public function sendTemplate(){
 
 	//拼接数组
 	$array = array(
-			'touser'=>'fbsjMGh8rO8Rg9ovdKXwBautk',
+			'touser'=>'oZOK3wNX1brDFw8j_TMEYZVuCeVU',
 			'template_id'=>'',
 			'url'=>'http://www.tandashui.com',
 			'data'=>array(
