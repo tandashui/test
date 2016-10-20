@@ -434,6 +434,37 @@ public function definedItem(){
 	var_dump($res);
 }
 
+public function sendTemplate(){
+	//1，获取到access_token
+	$access_token = $this->getWxAccessToken();
+	$url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
+
+	//拼接数组
+	$array = array(
+			'touser'=>'fbsjMGh8rO8Rg9ovdKXwBautk',
+			'template_id'=>'',
+			'url'=>'http://www.tandashui.com',
+			'data'=>array(
+				'name'=>array('value'=>'hello','color'=>"#173177"),
+				'money'=>array('value'=>'100','color'=>"#173177"),
+				'date'=>array('value'=>date('Y-md H:i:s'),'color'=>"#173177"),
+			),
+		);
+
+
+
+
+	//3,将数组－>json
+	$postJson = json_encode($array);
+
+	//调用curl函数
+
+	$res = $this->http_curl($url,'post','json',$postJson);
+
+	var_dump($res);
+
+
+}
 
 
 
