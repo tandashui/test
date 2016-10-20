@@ -468,6 +468,18 @@ public function sendTemplate(){
 
 
 
+public function getcode(){
+	$appid = 'wxf53ce7de30b50d8f';
+	$redirect_uri="http://test.tandashui.com/Home/Index/getopen_id"
+	$url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=".$redirect_uri."&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
+
+	$res = $this->http_curl($url,'get','json');
+}
+
+public function getopen_id(){
+	var_dump($_GET);die;
+}
+
 
 
 
