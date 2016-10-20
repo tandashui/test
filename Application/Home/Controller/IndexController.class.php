@@ -488,7 +488,13 @@ public function getopen_id(){
 
 	$res = $this->http_curl($url,'get','json');
 
-	var_dump($res);die;
+	// var_dump($res);die;
+
+	$urls="https://api.weixin.qq.com/sns/userinfo?access_token=".$res['access_token']."&openid=".$res['openid']."&lang=zh_CN";
+
+	$ress = $this->http_curl($urls,'get','json');
+
+	var_dump($ress);die;
 }
 
 
