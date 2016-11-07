@@ -545,6 +545,7 @@ public function getForeverQrcode(){
 
 	// var_dump($res);die;
 	echo $ticket = $res['ticket'];
+	var_dump($ticket);
 
 	//2,使用ticket 获取二维码图片
 	echo '水哥的公众号'."<br>";
