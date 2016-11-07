@@ -520,7 +520,7 @@ public function getQrcode(){
 	//2,使用ticket 获取二维码图片
 
 	$url = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
-	echo "<img src='".$url."' />"
+	echo "<img src='".$url."' />";
 	// $res = $this->http_curl($url);
 	// var_dump($res);die;
 
