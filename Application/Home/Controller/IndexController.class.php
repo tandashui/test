@@ -81,6 +81,34 @@ class IndexController extends Controller {
 
 			}
 
+			//如果是重扫二维码
+			if( strtolower($postObj->Event == 'scan') ){
+				if ($postObj->EventKey == 2000) {
+					# 如果是临时二维码扫描
+				}
+
+				if ($postObj->EventKey == 3000) {
+					# 如果是永久二维码
+				}
+
+				//回复用户消息(纯文本格式)	
+				$toUser   = $postObj->FromUserName;
+				$fromUser = $postObj->ToUserName;
+				$time     = time();
+				$msgType  =  'text';
+				$content  = '欢迎关注我们的微信公众账号'.$postObj->FromUserName.'-'.$postObj->ToUserName;
+				$template = "<xml>
+							<ToUserName><![CDATA[%s]]></ToUserName>
+							<FromUserName><![CDATA[%s]]></FromUserName>
+							<CreateTime>%s</CreateTime>
+							<MsgType><![CDATA[%s]]></MsgType>
+							<Content><![CDATA[%s]]></Content>
+							</xml>";
+				$info     = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+				echo $info;
+			
+			}
+
 				if (strtolower($postObj->Event) == 'click') {
 					
 				//如果是定义菜单中的event->click
@@ -542,6 +570,7 @@ public function getForeverQrcode(){
 	$postJson = json_encode($postArr);
 
 	$res = $this->http_curl($url,'post','json',$postJson);
+	var_dump($res);
 
 	// var_dump($res);die;
 	echo $ticket = $res['ticket'];
