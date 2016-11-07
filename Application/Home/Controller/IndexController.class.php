@@ -497,6 +497,28 @@ public function getopen_id(){
 	var_dump($ress);die;
 }
 
+public function getQrcode(){
+	//获取ticket票据
+	$access_token = $this->getWxAccessToken();
+	//全局票据access_token 网页授权access_token 微信js-SDK jsapi_tickek
+	$url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$access_token;
+
+	$postArr = array(
+			'expire_seconds'=>604800,//24*60*60*7
+			'action_name'=>"QR_SCENE",
+			'action_info'=>array(
+				'scence'=>array('scence_id'=>2000),
+				),
+		);
+	$postJson = json_encode($postArr);
+
+	$this->http_curl($url,'post','json',$postJson);
+
+
+}
+
+
+
 
 
 
