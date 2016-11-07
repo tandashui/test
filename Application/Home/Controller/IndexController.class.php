@@ -512,7 +512,9 @@ public function getQrcode(){
 		);
 	$postJson = json_encode($postArr);
 
-	$this->http_curl($url,'post','json',$postJson);
+	$res = $this->http_curl($url,'post','json',$postJson);
+
+	var_dump($res);die;
 
 
 }
