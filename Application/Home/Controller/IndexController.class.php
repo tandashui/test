@@ -527,6 +527,35 @@ public function getQrcode(){
 
 }
 
+public function getForeverQrcode(){
+	//获取ticket票据
+	$access_token = $this->getWxAccessToken();
+	//全局票据access_token 网页授权access_token 微信js-SDK jsapi_tickek
+	$url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$access_token;
+
+	$postArr = array(
+			'action_name'=>"QR_LIMIT_SCENE",
+			'action_info'=>array(
+				'scence'=>array('scence_id'=>3000),
+				),
+		);
+	$postJson = json_encode($postArr);
+
+	$res = $this->http_curl($url,'post','json',$postJson);
+
+	// var_dump($res);die;
+	echo $ticket = $res['ticket'];
+
+	//2,使用ticket 获取二维码图片
+	echo '水哥的公众号'."<br>";
+	$url = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
+	echo "<img src='".$url."' />";
+	// $res = $this->http_curl($url);
+	// var_dump($res);die;
+
+
+}
+
 
 
 
