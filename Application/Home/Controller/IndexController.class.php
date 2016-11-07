@@ -514,6 +514,14 @@ public function getQrcode(){
 
 	$res = $this->http_curl($url,'post','json',$postJson);
 
+	// var_dump($res);die;
+	echo $ticket = $res['ticket'];
+
+	//2,使用ticket 获取二维码图片
+
+	$url = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=".urlencode($ticket);
+
+	$res = $this->http_curl($url);
 	var_dump($res);die;
 
 
